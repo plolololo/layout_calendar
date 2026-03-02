@@ -4,18 +4,18 @@
 .calendar {
   display: flex;
   flex-wrap: wrap;
-  width: calc(#{$border-width-and-height} * 7 + 6 + (#{$calendar-padding} * 2));
-  gap: 1px;
+  width: $border-width-and-height * 7 + $gap * 6 + $calendar-padding * 2;
+  gap: $gap;
   padding: $calendar-padding;
 }
 
 .calendar__day {
-  background-color: #eee;
-  border: 1px solid #000;
+  background-color: $border-background-color;
+  border: $border-day;
   justify-content: center;
   align-items: center;
-  width: #{$border-width-and-height}px;
-  height: #{$border-width-and-height}px;
+  width: $border-width-and-height;
+  height: $border-width-and-height;
   transition-duration: 0.5s;
   display: flex;
 
@@ -33,7 +33,7 @@
   }
 }
 
-@for $i from 28 through 32 {
+@for $i from 28 through 31 {
   .calendar--month-length-#{$i} .calendar__day:nth-child(n + #{$i + 1}) {
     display: none;
   }
@@ -43,6 +43,6 @@
   $idx: list.index($weekdays, $weekday);
 
   .calendar--start-day-#{$weekday} .calendar__day:first-child {
-    margin-left: ($border-width-and-height + 1px) * ($idx - 1);
+    margin-left: ($border-width-and-height + $gap) * ($idx - 1);
   }
 }
